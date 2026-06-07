@@ -1,0 +1,9 @@
+# zig_playing_around
+I Thought of many things to do there, but I reallhy have no clue what I'm doing. I will say that Zig is very fun, but sometimes its soooooooooo annoying,   
+but not in a way that Rust is annoying - Rust almost forces you to use its libraries, yes, you can write your own, but its a hassle. Zig is the opposite  
+The standart library is fine untill you need to allocate something... I undertand why we gotta pass allocators everywhere but OMG is it annoying, I came here for simple.methods(), not to try ridiculously.long(expressions, that, .{needs, this, for, some, reason});  
+So its much better for your sanity to wrap everything in helper functions.
+And I think View(T) with Builder(T, allocator) is generally must have wrappers for []const T and ArrayList(T) Although I ditched ArrayList entierly, and that it allowed very nice builder.view interface. And my solution for wrapping is very cheap - Builder type definition accepts an allocator, so you dont  have to pass it, AND its compile-time, so no extra work needed! not like I care for performance, lol))).  
+I think if it was possible(and maybe it is?) I would do inplace wrappers, so that View is JUST a slice with extra methods, so you CAN do `[1..]` e.t.c. on it.  
+I saw some ztrait library, maybe it can help with that, but for now I'm quite surprised how dynamic zig is - it almost feels like its dynamic, but not in scala way, because in Scala everything is Any unless its not, here everything is some type unless its anytype. AND the funniest part is that Zig WILL compile everything even if there are mismatches, if you do not use functions "wrong way". And you can actually write anything in a function as long as its grammatically correct and you don't call it. 
+But when you call it, zig blows up with errors. Gotta give cudos to error messages though, they are not as good as rust, but they are definetely better than c.
